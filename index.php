@@ -1,32 +1,34 @@
 <?php
 
-session_start();
+    session_start();
 
-include 'function.php';
+    include 'function.php';
 
-if(isset($_SESSION['input'])) {
-    unset($_SESSION['input']);
-    unset($id);
-}
-
-if(!empty($_POST['name']) && !empty($_POST['quantity']) && !empty($_POST['price'])) {
-    addItem($_POST['name'], $_POST['quantity'], $_POST['price'], $_POST['id']);
-}
-
-if(!empty($_GET['action'])) {
-    if($_GET['action'] == 'modify' && isset($_GET['id'])) {
-        $id = $_GET['id'];
-
-        setInputVal('name', $id);
-        setInputVal('quantity', $id);
-        setInputVal('price', $id);
-
-    } else if($_GET['action'] == 'delete' && isset($_GET['id'])) {      
-        removeItem($_GET['id']);
-    } else if($_GET['action'] == 'empty') {
-        removeBasket();
+    if(isset($_SESSION['input'])) {
+        unset($_SESSION['input']);
+        unset($id);
     }
-}
+
+    if(!empty($_POST['name']) && !empty($_POST['quantity']) && !empty($_POST['price'])) {
+        addItem($_POST['name'], $_POST['quantity'], $_POST['price'], $_POST['id']);
+    }
+
+    if(!empty($_GET['action'])) {
+        if($_GET['action'] == 'modify' && isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            setInputVal('name', $id);
+            setInputVal('quantity', $id);
+            setInputVal('price', $id);
+
+        } else if($_GET['action'] == 'delete' && isset($_GET['id'])) {      
+            removeItem($_GET['id']);
+
+        } else if($_GET['action'] == 'empty') {
+            removeBasket();
+
+        }
+    }
 
 ?>
 
@@ -34,11 +36,13 @@ if(!empty($_GET['action'])) {
         "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>My PHP Basket</title>
     <script src="https://kit.fontawesome.com/ac5628c3f3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
+    <h1>My Basket</h1>
     <div class="container">       
         <?php if(!empty($_SESSION['basket'])): ?>
             <table>
@@ -78,7 +82,7 @@ if(!empty($_GET['action'])) {
             </table>
         <?php else: ?>
             <div id="msg">
-                <p>Basket vide</p>
+                <p>Empty Basket</p>
             </div>
         <?php endif ?>
         <form action="index.php" method="post">
@@ -86,19 +90,19 @@ if(!empty($_GET['action'])) {
                 <ul>
                     <input type="hidden" name="id" value="<?= $id ?? '' ?>">
                     <li>
-                        <label for="name">Nom: </label>
+                        <label for="name">Name: </label>
                         <input id="name" type="text" name="name" value="<?= $_SESSION['input']['name'] ?? '' ?>" />
                     </li>
                     <li>
-                        <label for="qty">Quantité: </label>
+                        <label for="qty">Quantity: </label>
                         <input id="qty" type="text" name="quantity" value="<?= $_SESSION['input']['quantity'] ?? '' ?>" />
                     </li>
                     <li>
-                        <label for="prx">Prix: </label>
+                        <label for="prx">Price: </label>
                         <input id="prx" type="text" name="price" value="<?= $_SESSION['input']['price'] ?? '' ?>" />
                     </li>
                     <li>
-                        <input type="submit" value="Ajouter" />
+                        <input type="submit" value="Add" />
                     </li>
                 </ul>
             </fieldset>    
