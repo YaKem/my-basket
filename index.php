@@ -43,7 +43,8 @@
 </head>
 <body>
     <h1>My Basket</h1>
-    <div class="container">       
+    <div id="container">
+        <button id="btn"><i class="fa fa-arrow-right"></i></button>       
         <?php if(!empty($_SESSION['basket'])): ?>
             <table>
                 <thead>
@@ -85,29 +86,32 @@
                 <p>Empty Basket</p>
             </div>
         <?php endif ?>
-        <form action="index.php" method="post">
-            <fieldset>
-                <ul>
-                    <input type="hidden" name="id" value="<?= $id ?? '' ?>">
-                    <li>
-                        <label for="name">Name: </label>
-                        <input id="name" type="text" name="name" value="<?= $_SESSION['input']['name'] ?? '' ?>" />
-                    </li>
-                    <li>
-                        <label for="qty">Quantity: </label>
-                        <input id="qty" type="text" name="quantity" value="<?= $_SESSION['input']['quantity'] ?? '' ?>" />
-                    </li>
-                    <li>
-                        <label for="prx">Price: </label>
-                        <input id="prx" type="text" name="price" value="<?= $_SESSION['input']['price'] ?? '' ?>" />
-                    </li>
-                    <li>
-                        <input type="submit" value="Add" />
-                    </li>
-                </ul>
-            </fieldset>    
-        </form>
+        <div id="form-container" class="hide">
+            <form action="index.php" method="post">
+                <fieldset>
+                    <ul>
+                        <input type="hidden" name="id" value="<?= $id ?? '' ?>">
+                        <li>
+                            <label for="name">Name: </label>
+                            <input id="name" type="text" name="name" value="<?= $_SESSION['input']['name'] ?? '' ?>" />
+                        </li>
+                        <li>
+                            <label for="qty">Quantity: </label>
+                            <input id="qty" type="text" name="quantity" value="<?= $_SESSION['input']['quantity'] ?? '' ?>" />
+                        </li>
+                        <li>
+                            <label for="prx">Price: </label>
+                            <input id="prx" type="text" name="price" value="<?= $_SESSION['input']['price'] ?? '' ?>" />
+                        </li>
+                        <li>
+                            <input type="submit" value="Add" />
+                        </li>
+                    </ul>
+                </fieldset>    
+            </form>
+        </div>
     </div>
+    <script src="./js/main.js"></script>
 </body>
 </html>
 
