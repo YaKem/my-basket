@@ -1,9 +1,68 @@
-* {
-    padding : 0;
-    margin : 0;
-}
-
 body {
-    background : white;
-    color : black;
+    background-color: black;
+    color: white;
+}
+.container {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+#msg {
+    background-color: orange;
+    color: white;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+table {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px 20px;
+    border: 1px solid white;
+}
+th {
+    text-align: left;
+}
+tbody td {
+    text-align: center;
+}
+.fa-pen {
+    color: rgb(0, 174, 255);
+    margin-right: 15px;
+}
+.fa-trash {
+    color: red;
+}
+tfoot td:first-child {
+    text-align: center;
+}
+.fa-recycle {
+    color: red;
+    font-size: 1.5em;
+}
+tfoot td:last-child {
+    font-weight: bolder;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding: 0 15px;
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+fieldset {
+    display: inline-block;
+    padding: 10px;           
+}
+input[type="submit"] {
+    padding: 5px 15px;
+    margin-top: 10px;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
 }
