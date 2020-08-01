@@ -61,7 +61,7 @@
                         <tr>
                             <td><?= $_SESSION['basket'][$i]['name'] ?></td>
                             <td><?= $_SESSION['basket'][$i]['quantity'] ?></td>
-                            <td><?= $_SESSION['basket'][$i]['price'] ?></td>
+                            <td><?= number_format($_SESSION['basket'][$i]['price'], 2) ?>€</td>
                             <td><?= $_SESSION['basket'][$i]['quantity'] * $_SESSION['basket'][$i]['price'] ?>€</td>
                             <td>
                                 <a href="index.php?action=modify&id=<?= $i ?>"><i class="fa fa-pen"></i></a>
@@ -76,7 +76,7 @@
                             <a href="index.php?action=empty"><i class="fa fa-recycle"></i></a>
                         </td>
                         <td colspan="4">
-                            Total: <?= getTotal() ?>€
+                            Total: <?= number_format(getTotal(), 2) ?>€
                         </td>
                     </tr>
                 </tfoot>  

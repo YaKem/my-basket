@@ -2,11 +2,22 @@
 
 const btn = document.getElementById('btn');
 const frm = document.getElementById('form-container');
+const btnPen = document.querySelector('tbody a:first-of-type');
 
-btn.addEventListener('click', () => {
-    frm.classList.toggle('hide');
+function arrowBtnHandler() {
 
-    const icon = document.querySelector('#btn i');
-    icon.classList.toggle('fa-arrow-down');
-    icon.classList.toggle('fa-arrow-right');
+    btn.addEventListener('click', () => {
+        frm.classList.toggle('hide');
+    
+        const icon = document.querySelector('#btn i');
+        icon.classList.toggle('fa-arrow-down');
+        icon.classList.toggle('fa-arrow-right');
+
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    
+    arrowBtnHandler();
+
 });
